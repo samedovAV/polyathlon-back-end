@@ -1,9 +1,9 @@
-package ru.samedov.polyathlonbackend.repo;
+package ru.samedov.polyathlonbackend.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.samedov.polyathlonbackend.model.Customer;
+import ru.samedov.polyathlonbackend.domain.Customer;
 
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {

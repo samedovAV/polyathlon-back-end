@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.samedov.polyathlonbackend.model.Customer;
-import ru.samedov.polyathlonbackend.repo.CustomerRepository;
+import ru.samedov.polyathlonbackend.domain.Customer;
+import ru.samedov.polyathlonbackend.repository.CustomerRepository;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -29,7 +29,6 @@ public class CustomerController {
 
 	@GetMapping("/customers")
 	public List<Customer> getAllCustomers() {
-		System.out.println("Get all Customers...");
 
 		List<Customer> customers = new ArrayList<>();
 		repository.findAll().forEach(customers::add);
