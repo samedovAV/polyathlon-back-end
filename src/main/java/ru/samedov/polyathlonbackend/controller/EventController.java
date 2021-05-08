@@ -7,8 +7,9 @@ import ru.samedov.polyathlonbackend.service.EventService;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/event")
 @RequiredArgsConstructor
 public class EventController {
 
