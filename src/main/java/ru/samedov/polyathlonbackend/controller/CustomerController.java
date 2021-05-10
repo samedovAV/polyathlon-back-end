@@ -39,8 +39,7 @@ public class CustomerController {
 	@PostMapping("/customer")
 	public Customer postCustomer(@RequestBody Customer customer) {
 
-		Customer _customer = repository.save(new Customer(customer.getName(), customer.getAge()));
-		return _customer;
+		return repository.save(new Customer(customer.getName(), customer.getAge()));
 	}
 
 	@DeleteMapping("/customer/{id}")
@@ -55,8 +54,7 @@ public class CustomerController {
 	@GetMapping("customers/age/{age}")
 	public List<Customer> findByAge(@PathVariable int age) {
 
-		List<Customer> customers = repository.findByAge(age);
-		return customers;
+		return repository.findByAge(age);
 	}
 
 	@PutMapping("/customer/{id}")

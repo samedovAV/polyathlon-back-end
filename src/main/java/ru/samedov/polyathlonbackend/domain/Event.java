@@ -1,9 +1,6 @@
 package ru.samedov.polyathlonbackend.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -18,6 +15,9 @@ public class Event {
     private String description;
 
     private LocalDate date;
+
+    @ManyToOne
+    private User creator;
 
     public Event() {
     }
@@ -59,5 +59,13 @@ public class Event {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }
