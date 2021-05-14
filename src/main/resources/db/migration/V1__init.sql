@@ -43,6 +43,16 @@ create table users
         primary key (id)
 );
 
+create table sportsman
+(
+        id  bigserial not null,
+        age int4 not null,
+        first_name text,
+        last_name text,
+        year_of_birth int4 not null,
+        primary key (id)
+);
+
 alter table users
        add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username);
 
