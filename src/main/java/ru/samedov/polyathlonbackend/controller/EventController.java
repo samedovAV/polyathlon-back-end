@@ -15,9 +15,14 @@ public class EventController {
 
     private final EventService eventService;
 
-    @GetMapping(value = "/events")
+    @GetMapping(value = "/events/list")
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
+    }
+
+    @GetMapping(value = "/events/list/{id}")
+    public Event getOneEvent(@PathVariable Long id) {
+        return eventService.getOneEvent(id);
     }
 
     @PostMapping(value = "/add-event")

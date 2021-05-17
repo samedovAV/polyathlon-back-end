@@ -31,4 +31,8 @@ public class EventService {
         eventRepository.save(event);
         return event;
     }
+
+    public Event getOneEvent(Long id) {
+        return eventRepository.findById(id).orElse(null);
+    }
 }

@@ -1,6 +1,7 @@
 package ru.samedov.polyathlonbackend.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -18,6 +19,9 @@ public class Sportsman {
 
     // todo calc age
     private int age;
+
+    @OneToMany(mappedBy = "sportsman")
+    private List<Participation> participationList;
 
     public Sportsman() {
     }
@@ -67,5 +71,13 @@ public class Sportsman {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Participation> getParticipationList() {
+        return participationList;
+    }
+
+    public void setParticipationList(List<Participation> participationList) {
+        this.participationList = participationList;
     }
 }
