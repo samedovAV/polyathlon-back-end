@@ -20,7 +20,7 @@ public class Sportsman {
     // todo calc age
     private int age;
 
-    @OneToMany(mappedBy = "sportsman")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sportsman")
     private List<Participation> participationList;
 
     public Sportsman() {
@@ -73,11 +73,4 @@ public class Sportsman {
         this.age = age;
     }
 
-    public List<Participation> getParticipationList() {
-        return participationList;
-    }
-
-    public void setParticipationList(List<Participation> participationList) {
-        this.participationList = participationList;
-    }
 }

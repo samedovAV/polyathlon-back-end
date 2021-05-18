@@ -15,7 +15,6 @@ public class Participation {
     private int result;
 
     @ManyToOne
-    @JoinColumn(name="sportsman_id", nullable=false)
     private Sportsman sportsman;
 
     public Participation() {

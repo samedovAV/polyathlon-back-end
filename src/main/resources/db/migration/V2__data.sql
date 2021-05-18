@@ -13,3 +13,6 @@ insert into event(id, date, description, title, creator_id) values
 
 insert into sportsman(id, age, first_name, last_name, year_of_birth) values
 (0, 20, 'Alex', 'Ivanov', 2000);
+
+insert into participation(id, name, result, sportsman_id) values
+(1, 'пятиборье', 300, 0);
