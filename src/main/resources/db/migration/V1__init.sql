@@ -53,6 +53,14 @@ create table sportsman
         primary key (id)
 );
 
+create table participation
+(
+        id  bigserial not null,
+        name varchar(255),
+        result int4 not null,
+        sportsman_id int8,
+        primary key (id)
+);
 alter table users
        add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username);
 
@@ -73,3 +81,8 @@ alter table user_roles
        add constraint FKhfh9dx7w3ubf1co1vdev94g3f
        foreign key (user_id)
        references users;
+
+alter table participation
+    add constraint FKkumrptdhdbu5g3k45hfn028m5
+        foreign key (sportsman_id)
+            references sportsman;
