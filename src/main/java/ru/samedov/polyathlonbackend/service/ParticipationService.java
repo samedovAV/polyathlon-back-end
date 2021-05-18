@@ -13,7 +13,7 @@ public class ParticipationService {
 
     private final ParticipationRepository participationRepository;
 
-    public List<Participation> getAllParticipation() {
-        return participationRepository.findAll();
+    public List<Participation> getAllParticipation(Long sportsmanId) {
+        return participationRepository.findAllBySportsmanId(sportsmanId);
     }
 }

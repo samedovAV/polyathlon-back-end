@@ -1,10 +1,7 @@
 package ru.samedov.polyathlonbackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.samedov.polyathlonbackend.domain.Participation;
 import ru.samedov.polyathlonbackend.service.ParticipationService;
 
@@ -19,7 +16,7 @@ public class ParticipationController {
     private final ParticipationService participationService;
 
     @GetMapping(value = "/list")
-    public List<Participation> getAllParticipation() {
-        return participationService.getAllParticipation();
+    public List<Participation> getAllParticipation(@RequestParam Long sportsmanId) {
+        return participationService.getAllParticipation(sportsmanId);
     }
 }
