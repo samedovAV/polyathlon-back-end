@@ -23,6 +23,9 @@ public class Sportsman {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sportsman")
     private List<Participation> participationList;
 
+    @ManyToOne
+    private Event event;
+
     public Sportsman() {
     }
 
@@ -73,4 +76,19 @@ public class Sportsman {
         this.age = age;
     }
 
+    public List<Participation> getParticipationList() {
+        return participationList;
+    }
+
+    public void setParticipationList(List<Participation> participationList) {
+        this.participationList = participationList;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
 }

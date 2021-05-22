@@ -1,9 +1,12 @@
 package ru.samedov.polyathlonbackend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.samedov.polyathlonbackend.domain.Event;
+import ru.samedov.polyathlonbackend.domain.ParticipationApplication;
 import ru.samedov.polyathlonbackend.service.EventService;
+import ru.samedov.polyathlonbackend.service.ParticipationApplicationService;
 
 import java.util.List;
 
@@ -14,6 +17,7 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+    private final ParticipationApplicationService participationApplicationService;
 
     @GetMapping(value = "/events/list")
     public List<Event> getAllEvents() {
@@ -26,7 +30,21 @@ public class EventController {
     }
 
     @PostMapping(value = "/add-event")
-    public void addEvent(@RequestBody Event event) {
-        eventService.addEvent(event);
+    public Event addEvent(@RequestBody Event event) {
+        return eventService.addEvent(event);
     }
+
+    @GetMapping(value = "/get-applications")
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<ParticipationApplication> getApplications() {
+        // todo по event_id
+        return participationApplicationService.getAll();
+    }
+
+    @PostMapping(value = "/accept-application")
+    @PreAuthorize("hasRole('ADMIN')")
+    public void acceptApplication(@RequestBody ParticipationApplication participationApplication) {
+        eventService.acceptApplication(participationApplication);
+    }
+
 }

@@ -2,8 +2,10 @@ package ru.samedov.polyathlonbackend.domain;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Table
 public class Event {
 
     @Id
@@ -15,6 +17,9 @@ public class Event {
     private String description;
 
     private LocalDate date;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
+    private List<Sportsman> sportsmanList;
 
     @ManyToOne
     private User creator;
@@ -61,11 +66,23 @@ public class Event {
         this.date = date;
     }
 
+    public List<Sportsman> getSportsmanList() {
+        return sportsmanList;
+    }
+
+    public void setSportsmanList(List<Sportsman> sportsmanList) {
+        this.sportsmanList = sportsmanList;
+    }
+
     public User getCreator() {
         return creator;
     }
 
     public void setCreator(User creator) {
         this.creator = creator;
+    }
+
+    public void addSportsman(Sportsman sportsman) {
+        sportsmanList.add(sportsman);
     }
 }

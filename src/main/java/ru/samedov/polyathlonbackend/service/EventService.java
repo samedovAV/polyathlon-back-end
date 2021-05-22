@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import ru.samedov.polyathlonbackend.domain.Event;
+import ru.samedov.polyathlonbackend.domain.ParticipationApplication;
 import ru.samedov.polyathlonbackend.repository.EventRepository;
 
 import java.time.LocalDate;
@@ -34,5 +35,14 @@ public class EventService {
 
     public Event getOneEvent(Long id) {
         return eventRepository.findById(id).orElse(null);
+    }
+
+    public void acceptApplication(ParticipationApplication participationApplication) {
+        Event event = eventRepository.findById(participationApplication.getEventId())
+                .orElse(null);
+
+        if(event != null) {
+            participationApplication.getSportsmen().forEach(event::addSportsman);
+        }
     }
 }
