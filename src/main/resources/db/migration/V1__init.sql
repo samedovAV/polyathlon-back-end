@@ -63,24 +63,6 @@ create table participation
         primary key (id)
 );
 
-create table participation_application
-(
-        id int8 not null,
-        event_id int8,
-        university text,
-        creator_id int8,
-        primary key (id)
-);
-
-create table participation_application_sportsmen
-(
-        participation_application_id int8 not null,
-        sportsmen_id int8 not null
-);
-
-alter table participation_application_sportsmen
-    add constraint UK_smgu3p3um0jot63se64qufbel unique (sportsmen_id);
-
 alter table users
        add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username);
 
@@ -107,10 +89,37 @@ alter table participation
         foreign key (sportsman_id)
             references sportsman;
 
+alter table sportsman
+    add constraint FKfb9t6c1c02c2v8w58w0dxh3jf
+        foreign key (event_id)
+            references event;
+
+create table participation_application
+(
+    id int8 not null,
+    university varchar(255),
+    creator_id int8,
+    event_id int8,
+    primary key (id)
+);
+
+create table participation_application_sportsmen (
+                                                     participation_application_id int8 not null,
+                                                     sportsmen_id int8 not null
+);
+
+alter table participation_application_sportsmen
+    add constraint UK_smgu3p3um0jot63se64qufbel unique (sportsmen_id);
+
 alter table participation_application
     add constraint FK77k7uvbrt4srfmmsmvo696hqj
         foreign key (creator_id)
             references users;
+
+alter table participation_application
+    add constraint FKqkttvq6lowmh5tgbnqh9mejc1
+        foreign key (event_id)
+            references event;
 
 alter table participation_application_sportsmen
     add constraint FKnwvmryg276pdhj8kdt0n04xml
@@ -121,8 +130,3 @@ alter table participation_application_sportsmen
     add constraint FKob2ed8qg158h80cjcxhcexafq
         foreign key (participation_application_id)
             references participation_application;
-
-alter table sportsman
-    add constraint FKfb9t6c1c02c2v8w58w0dxh3jf
-        foreign key (event_id)
-            references event;

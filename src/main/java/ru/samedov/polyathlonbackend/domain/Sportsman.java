@@ -23,7 +23,9 @@ public class Sportsman {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sportsman")
     private List<Participation> participationList;
 
-    @ManyToOne
+    @ManyToOne (fetch=FetchType.LAZY,
+            cascade=CascadeType.ALL)
+    @JoinColumn (name="event_id")
     private Event event;
 
     public Sportsman() {

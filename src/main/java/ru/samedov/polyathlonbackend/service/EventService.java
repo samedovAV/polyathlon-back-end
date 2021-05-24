@@ -38,7 +38,7 @@ public class EventService {
     }
 
     public void acceptApplication(ParticipationApplication participationApplication) {
-        Event event = eventRepository.findById(participationApplication.getEventId())
+        Event event = eventRepository.findById(participationApplication.getEvent().getId())
                 .orElse(null);
 
         if(event != null) {

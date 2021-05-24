@@ -1,5 +1,7 @@
 package ru.samedov.polyathlonbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,8 +20,16 @@ public class Event {
 
     private LocalDate date;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "event",
+            cascade = CascadeType.ALL)
     private List<Sportsman> sportsmanList;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "event",
+            cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<ParticipationApplication> applicationList;
 
     @ManyToOne
     private User creator;
@@ -84,5 +94,13 @@ public class Event {
 
     public void addSportsman(Sportsman sportsman) {
         sportsmanList.add(sportsman);
+    }
+
+    public List<ParticipationApplication> getApplicationList() {
+        return applicationList;
+    }
+
+    public void setApplicationList(List<ParticipationApplication> applicationList) {
+        this.applicationList = applicationList;
     }
 }

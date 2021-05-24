@@ -35,14 +35,14 @@ public class EventController {
     }
 
     @GetMapping(value = "/get-applications")
-    @PreAuthorize("hasRole('ADMIN')")
-    public List<ParticipationApplication> getApplications() {
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public List<ParticipationApplication> getApplications(@RequestBody Event event) {
         // todo по event_id
-        return participationApplicationService.getAll();
+        return participationApplicationService.getAllForEvent(event);
     }
 
     @PostMapping(value = "/accept-application")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void acceptApplication(@RequestBody ParticipationApplication participationApplication) {
         eventService.acceptApplication(participationApplication);
     }

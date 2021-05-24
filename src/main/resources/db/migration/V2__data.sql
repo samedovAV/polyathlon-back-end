@@ -21,3 +21,6 @@ insert into sportsman(id, age, first_name, last_name, year_of_birth) values
 
 insert into participation(id, name, result, sportsman_id) values
 (1, 'пятиборье', 300, 0);
+
+insert into participation_application(id, university, creator_id, event_id) values
+(0, 'mirea', 2, 0);

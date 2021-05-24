@@ -1,5 +1,8 @@
 package ru.samedov.polyathlonbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,15 +16,22 @@ public class ParticipationApplication {
 
     private String university;
 
-    private Long eventId;
-
     @ManyToOne
     private User creator;
 
     @OneToMany
     private List<Sportsman> sportsmen;
 
+    @ManyToOne
+    @JsonBackReference
+    private Event event;
+
     public ParticipationApplication() {
+    }
+
+    public ParticipationApplication(long id, String university) {
+        this.id = id;
+        this.university = university;
     }
 
     public long getId() {
@@ -40,14 +50,6 @@ public class ParticipationApplication {
         this.university = university;
     }
 
-    public Long getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(Long eventId) {
-        this.eventId = eventId;
-    }
-
     public User getCreator() {
         return creator;
     }
@@ -62,5 +64,13 @@ public class ParticipationApplication {
 
     public void setSportsmen(List<Sportsman> sportsmen) {
         this.sportsmen = sportsmen;
+    }
+
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }
