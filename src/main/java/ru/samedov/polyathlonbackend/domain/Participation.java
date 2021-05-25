@@ -1,5 +1,7 @@
 package ru.samedov.polyathlonbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Participation {
     private int result;
 
     @ManyToOne
+    @JsonBackReference
     private Sportsman sportsman;
 
     public Participation() {

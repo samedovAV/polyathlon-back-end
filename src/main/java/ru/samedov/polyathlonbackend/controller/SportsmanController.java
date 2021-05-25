@@ -21,7 +21,7 @@ public class SportsmanController {
         return sportsmanRepository.findAll();
     }
 
-    @PostMapping("sportsman/add-sportsman")
+    @PostMapping("/sportsman/add-sportsman")
     public Sportsman addSportsman(@RequestBody Sportsman sportsman) {
         return sportsmanRepository.save(sportsman);
     }

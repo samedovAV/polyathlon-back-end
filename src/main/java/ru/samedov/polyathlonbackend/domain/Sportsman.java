@@ -1,5 +1,8 @@
 package ru.samedov.polyathlonbackend.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -21,11 +24,13 @@ public class Sportsman {
     private int age;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "sportsman")
+    @JsonManagedReference
     private List<Participation> participationList;
 
     @ManyToOne (fetch=FetchType.LAZY,
             cascade=CascadeType.ALL)
     @JoinColumn (name="event_id")
+    @JsonBackReference
     private Event event;
 
     public Sportsman() {

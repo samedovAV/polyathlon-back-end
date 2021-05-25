@@ -1,6 +1,7 @@
 package ru.samedov.polyathlonbackend.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import ru.samedov.polyathlonbackend.domain.Event;
@@ -9,6 +10,7 @@ import ru.samedov.polyathlonbackend.service.EventService;
 import ru.samedov.polyathlonbackend.service.ParticipationApplicationService;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -45,6 +47,12 @@ public class EventController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void acceptApplication(@RequestBody ParticipationApplication participationApplication) {
         eventService.acceptApplication(participationApplication);
+    }
+
+    @PutMapping("/events/update-event/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable("id") Event eventFromDB,
+                                             @RequestBody Event event) {
+        return eventService.updateEvent(eventFromDB, event);
     }
 
 }

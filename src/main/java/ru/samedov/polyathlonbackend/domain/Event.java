@@ -23,6 +23,7 @@ public class Event {
     @OneToMany(fetch = FetchType.LAZY,
             mappedBy = "event",
             cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Sportsman> sportsmanList;
 
     @OneToMany(fetch = FetchType.LAZY,

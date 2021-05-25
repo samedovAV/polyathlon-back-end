@@ -15,8 +15,8 @@ public class ParticipationController {
 
     private final ParticipationService participationService;
 
-    @GetMapping(value = "/list")
-    public List<Participation> getAllParticipation(@RequestParam Long sportsmanId) {
-        return participationService.getAllParticipation(sportsmanId);
+    @GetMapping(value = "/list{id}")
+    public List<Participation> getAllParticipation(@PathVariable Long id) {
+        return participationService.getAllParticipation(id);
     }
 }
