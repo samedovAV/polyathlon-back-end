@@ -1,4 +1,4 @@
-package ru.samedov.polyathlonbackend.controller;
+package ru.samedov.polyathlonbackend.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,6 @@ import ru.samedov.polyathlonbackend.service.EventService;
 import ru.samedov.polyathlonbackend.service.ParticipationApplicationService;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController

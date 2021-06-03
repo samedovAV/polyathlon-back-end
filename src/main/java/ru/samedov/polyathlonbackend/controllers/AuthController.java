@@ -1,4 +1,4 @@
-package ru.samedov.polyathlonbackend.controller;
+package ru.samedov.polyathlonbackend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

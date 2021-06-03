@@ -1,4 +1,4 @@
-package ru.samedov.polyathlonbackend.controller;
+package ru.samedov.polyathlonbackend.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;

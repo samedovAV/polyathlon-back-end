@@ -1,4 +1,4 @@
-package ru.samedov.polyathlonbackend.controller;
+package ru.samedov.polyathlonbackend.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

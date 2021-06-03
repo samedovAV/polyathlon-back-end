@@ -6,7 +6,7 @@ import ru.samedov.polyathlonbackend.domain.ParticipationApplication;
 
 import java.util.List;
 
-@Repository
+
 public interface ParticipationApplicationRepository extends JpaRepository<ParticipationApplication, Long> {
 
     List<ParticipationApplication> getAllByEventId(Long eventId);

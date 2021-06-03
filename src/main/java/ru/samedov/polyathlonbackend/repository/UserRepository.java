@@ -7,6 +7,7 @@ import ru.samedov.polyathlonbackend.domain.User;
 import java.util.Optional;
 
 @Repository
+@SuppressWarnings("unused")
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
